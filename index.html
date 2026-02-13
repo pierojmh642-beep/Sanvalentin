@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Angie 💘</title>
+
+<style>
+body{
+  margin:0;
+  padding:0;
+  overflow:hidden;
+  background:black;
+  font-family: 'Arial', sans-serif;
+  text-align:center;
+  color:white;
+}
+
+/* CONTENEDORES */
+.section{
+  position:absolute;
+  width:100%;
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  transition:1s;
+}
+
+/* ESTRELLAS */
+.star{
+  position:absolute;
+  width:4px;
+  height:4px;
+  background:gold;
+  border-radius:50%;
+  animation:fall linear infinite;
+}
+
+@keyframes fall{
+  from{transform:translateY(-10vh);}
+  to{transform:translateY(110vh);}
+}
+
+/* CORAZONES TRANSICION */
+.heart-fall{
+  position:absolute;
+  color:white;
+  font-size:20px;
+  animation:fall linear infinite;
+}
+
+/* LIRIOS */
+.lily{
+  position:absolute;
+  font-size:25px;
+  animation:fall linear infinite;
+}
+
+/* CORAZON BOTON */
+.big-heart{
+  font-size:80px;
+  cursor:pointer;
+  animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+  0%{transform:scale(1);}
+  50%{transform:scale(1.1);}
+  100%{transform:scale(1);}
+}
+
+/* CUADRO BLANCO */
+.box{
+  background:white;
+  color:black;
+  padding:30px;
+  border-radius:20px;
+  width:80%;
+  max-width:400px;
+}
+
+/* BOTONES */
+button{
+  margin:15px;
+  padding:10px 20px;
+  border:none;
+  border-radius:20px;
+  font-size:16px;
+  cursor:pointer;
+}
+
+.yes{
+  background:#ff4d6d;
+  color:white;
+}
+
+.obvio{
+  background:#ff85a1;
+  color:white;
+}
+
+/* MENSAJE FINAL */
+.final-message{
+  padding:40px;
+  max-width:800px;
+  line-height:1.6;
+}
+
+/* GLOBOS */
+.balloon{
+  display:inline-block;
+  background:red;
+  color:white;
+  padding:15px 20px;
+  margin:5px;
+  border-radius:50%;
+  font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<!-- PANTALLA 1 -->
+<div id="screen1" class="section">
+  <div class="big-heart" onclick="start()">❤️</div>
+  <p>Haz clic aquí</p>
+</div>
+
+<!-- PANTALLA 2 -->
+<div id="screen2" class="section" style="display:none;">
+  <div class="box">
+    <h2>¿Quieres ser mi San Valentín, Angie Serpa? 💘</h2>
+    <button class="yes" onclick="final()">Sí 💞</button>
+    <button class="obvio" onclick="final()">Obvio que sí 🥰</button>
+  </div>
+</div>
+
+<!-- PANTALLA 3 -->
+<div id="screen3" class="section" style="display:none; overflow:auto;">
+  <div class="final-message">
+    <p>
+Mi amor,<br><br>
+
+No sé ni por dónde empezar, porque lo que siento por ti no entra en unas simples palabras. Pero hoy, en San Valentín, quiero intentarlo.<br><br>
+
+Eres el amor de mi vida. La mujer que llegó sin avisar y cambió todo. Cada día que estoy contigo siento cosas que ni yo sabía que podía sentir. Contigo todo se siente diferente… más bonito, más intenso, más real.<br><br>
+
+No encuentro una mujer como tú dos veces en esta vida. Eres amorosa, cariñosa, juguetona, divertida… pero sobre todo eres tú. Esa mezcla perfecta que me hace sonreír incluso en mis días más pesados.<br><br>
+
+Me encanta tu forma de reír, tu manera de abrazarme, cómo me miras, cómo haces que todo sea más ligero. Contigo no solo encontré una pareja… encontré mi lugar seguro.<br><br>
+
+Gracias por existir. Gracias por elegirme. Gracias por hacerme sentir amado.<br><br>
+
+Te amo más de lo que imaginas, y prometo seguir construyendo contigo algo bonito, fuerte y duradero.<br><br>
+
+Feliz San Valentín, mi vida ❤️
+    </p>
+
+    <div>
+      <span class="balloon">T</span>
+      <span class="balloon">E</span>
+      <span class="balloon">A</span>
+      <span class="balloon">M</span>
+      <span class="balloon">O</span>
+    </div>
+  </div>
+</div>
+
+<script>
+
+/* CREAR ESTRELLAS */
+for(let i=0;i<100;i++){
+  let star=document.createElement("div");
+  star.className="star";
+  star.style.left=Math.random()*100+"%";
+  star.style.animationDuration=(3+Math.random()*5)+"s";
+  document.body.appendChild(star);
+}
+
+/* TRANSICION CORAZONES */
+function heartTransition(){
+  for(let i=0;i<50;i++){
+    let heart=document.createElement("div");
+    heart.className="heart-fall";
+    heart.innerHTML="🤍";
+    heart.style.left=Math.random()*100+"%";
+    heart.style.animationDuration=(2+Math.random()*3)+"s";
+    document.body.appendChild(heart);
+    setTimeout(()=>heart.remove(),3000);
+  }
+}
+
+/* LIRIOS + CORAZONES */
+function lilies(){
+  for(let i=0;i<50;i++){
+    let lily=document.createElement("div");
+    lily.className="lily";
+    lily.innerHTML="🤍🌸❤️";
+    lily.style.left=Math.random()*100+"%";
+    lily.style.animationDuration=(4+Math.random()*5)+"s";
+    document.body.appendChild(lily);
+  }
+}
+
+/* INICIO */
+function start(){
+  heartTransition();
+  document.getElementById("screen1").style.display="none";
+  document.getElementById("screen2").style.display="flex";
+  lilies();
+}
+
+/* FINAL */
+function final(){
+  heartTransition();
+
+  // limpiar lirios y corazones anteriores
+  document.querySelectorAll(".lily").forEach(el => el.remove());
+  document.querySelectorAll(".heart-fall").forEach(el => el.remove());
+
+  document.getElementById("screen2").style.display="none";
+  document.getElementById("screen3").style.display="flex";
+}
+</script>
+
+</body>
+</html>
